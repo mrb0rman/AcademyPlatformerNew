@@ -1,4 +1,5 @@
 ﻿using AcademyPlatformerNew.Installer;
+using AcademyPlatformerNew.Protocol;
 using Zenject;
 
 namespace AcademyPlatformerNew
@@ -7,11 +8,17 @@ namespace AcademyPlatformerNew
     {
         public override void InstallBindings()
         {
-            UIServicenstaller.Install(Container);
+            Container
+                .Bind<GameController>()
+                .AsSingle()
+                .NonLazy();
             
-            PlayerInstaller.Install(Container);
+            UIServiceInstaller.Install(Container);
             
-            FallObjectInstaller.Install(Container);
+            
+            //PlayerInstaller.Install(Container);
+            
+            //FallObjectInstaller.Install(Container);
         }
     }
 }

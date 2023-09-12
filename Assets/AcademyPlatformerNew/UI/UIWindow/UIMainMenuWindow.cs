@@ -1,15 +1,27 @@
-﻿namespace AcademyPlatformerNew.UI.UIWindow
+﻿using System;
+using UnityEngine;
+
+namespace AcademyPlatformerNew.UI.UIWindow
 {
     public class UIMainMenuWindow : UIService.UIWindow
     {
+        public Action OnStartButtonClickEvent;
+        
+        [SerializeField] private UIButton startButton;
+        
         public override void Show()
         {
-            throw new System.NotImplementedException();
+            startButton.OnClickButton += StartButtonClickEvent; 
         }
 
         public override void Hide()
         {
-            throw new System.NotImplementedException();
+            startButton.OnClickButton -= StartButtonClickEvent;
+        }
+
+        private void StartButtonClickEvent()
+        {
+            OnStartButtonClickEvent?.Invoke();
         }
     }
 }

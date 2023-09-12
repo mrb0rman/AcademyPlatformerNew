@@ -15,6 +15,8 @@ namespace AcademyPlatformerNew.UI.UIService
         public UIService(UIRoot uiRoot)
         {
             _uiRoot = uiRoot;
+            LoadWindows();
+            InitWindows();
         }
 
         public T Show<T>() where T : UIWindow
@@ -57,6 +59,8 @@ namespace AcademyPlatformerNew.UI.UIService
             foreach (var key in _loadWindow.Keys)
             {
                 var window = GameObject.Instantiate(_loadWindow[key].gameObject, _uiRoot.DeactiveContainer);
+               
+                window.transform.SetParent(_uiRoot.DeactiveContainer);
                 
                 _initWindow.Add(key, window);
             }

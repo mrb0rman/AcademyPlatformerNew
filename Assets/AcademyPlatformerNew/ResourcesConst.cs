@@ -2,10 +2,15 @@
 {
     public class ResourcesConst
     {
-        public static string SourceUIWindow = "";
-        public static string UIRootPrefab = "UIRoot";
-        public static string UIMainMenuWindowPrefab = "UIMainMenuWindow";
-        public static string UIGameWindowPrefab = "UIGameWindow";
-        public static string UIRestartWindowPrefab = "UIRestartWindow";
+        public const string SourceUIWindow = "";
+        public const string UIRootPrefab = "UIRoot";
+        public const string UIMainMenuWindowPrefab = "UIMainMenuWindow";
+        public const string UIGameWindowPrefab = "UIGameWindow";
+        public const string UIRestartWindowPrefab = "UIRestartWindow";
+        public const string SoundConfig = "SoundConfig";
+        public const string SoundView = "SoundView";
+        public const string PlayerConfig = "PlayerConfig";
+        public const string PlayerPrefab = "Player";
+        public const string CameraPrefab = "Camera";
     }
 }

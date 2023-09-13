@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AcademyPlatformerNew.UI.UIWindow
 {
-    public class UIMainMenuWindow : UIService.UIWindow
+    public class UIMainMenuWindow : UIAnimationWindow
     {
         public Action OnStartButtonClickEvent;
         
@@ -11,11 +11,13 @@ namespace AcademyPlatformerNew.UI.UIWindow
         
         public override void Show()
         {
+            base.Show();
             startButton.OnClickButton += StartButtonClickEvent; 
         }
 
         public override void Hide()
         {
+            base.Hide();
             startButton.OnClickButton -= StartButtonClickEvent;
         }
 

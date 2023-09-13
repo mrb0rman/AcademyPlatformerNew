@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using AcademyPlatformerNew.Player;
+using Zenject;
 
 namespace AcademyPlatformerNew.Installer
 {
@@ -6,7 +7,31 @@ namespace AcademyPlatformerNew.Installer
     {
         public override void InstallBindings()
         {
-            throw new System.NotImplementedException();
+            Container
+                .BindFactory<PlayerView, PlayerView.Factory>()
+                .FromComponentInNewPrefabResource(ResourcesConst.PlayerPrefab)
+                .AsSingle();
+            
+            Container
+                .Bind<PlayerConfig>()
+                .FromScriptableObjectResource(ResourcesConst.PlayerConfig)
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .Bind<PlayerAnimator>()
+                .AsSingle()
+                .NonLazy();
+
+            Container
+                .Bind<PlayerMovementController>()
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .Bind<PlayerController>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

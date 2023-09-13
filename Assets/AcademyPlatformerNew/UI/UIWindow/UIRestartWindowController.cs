@@ -11,6 +11,9 @@
             _uiService = uiService;
 
             _uiRestartWindow = _uiService.Get<UIRestartWindow>();
+
+            _uiRestartWindow.OnShowEvent += ShowWindow;
+            _uiRestartWindow.OnHideEvent += HideWindow;
         }
         
         private void ShowWindow()

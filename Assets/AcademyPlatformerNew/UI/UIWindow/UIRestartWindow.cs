@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AcademyPlatformerNew.UI.UIWindow
 {
-    public class UIRestartWindow : UIService.UIWindow
+    public class UIRestartWindow : UIAnimationWindow
     {
         public Action OnReturnButtonClickEvent;
         
@@ -11,11 +11,13 @@ namespace AcademyPlatformerNew.UI.UIWindow
         
         public override void Show()
         {
+            base.Show();
             returnButton.OnClickButton += StartReturnButtonClickEvent;
         }
 
         public override void Hide()
         {
+            base.Hide();
             returnButton.OnClickButton -= StartReturnButtonClickEvent;
         }
         

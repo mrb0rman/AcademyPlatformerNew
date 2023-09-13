@@ -17,7 +17,6 @@ namespace AcademyPlatformerNew
 
         private void Init()
         {
-            
             _uiService.Show<UIMainMenuWindow>();
         }
     }

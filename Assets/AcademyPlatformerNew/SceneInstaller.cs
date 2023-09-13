@@ -1,4 +1,5 @@
-﻿using AcademyPlatformerNew.Installer;
+﻿using AcademyPlatformerNew.Camera;
+using AcademyPlatformerNew.Installer;
 using AcademyPlatformerNew.Protocol;
 using Zenject;
 
@@ -8,16 +9,31 @@ namespace AcademyPlatformerNew
     {
         public override void InstallBindings()
         {
+            UIServiceInstaller.Install(Container);
+            
             Container
                 .Bind<GameController>()
                 .AsSingle()
                 .NonLazy();
             
-            UIServiceInstaller.Install(Container);
+            Container
+                .Bind<TickableManager.TickableManager>()
+                .AsSingle()
+                .NonLazy();
+
+            Container
+                .Bind<InputController>()
+                .AsSingle()
+                .NonLazy();
             
+            Container
+                .Bind<CameraView>()
+                .FromComponentInNewPrefabResource(ResourcesConst.CameraPrefab)
+                .AsSingle()
+                .NonLazy();
             
-            //PlayerInstaller.Install(Container);
-            
+            PlayerInstaller.Install(Container);
+
             //FallObjectInstaller.Install(Container);
         }
     }

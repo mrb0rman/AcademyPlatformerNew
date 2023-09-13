@@ -1,4 +1,6 @@
-﻿using AcademyPlatformerNew.UI.UIWindow;
+﻿using AcademyPlatformerNew.UI.HUD;
+using AcademyPlatformerNew.UI.UIService;
+using AcademyPlatformerNew.UI.UIWindow;
 using Zenject;
 
 namespace AcademyPlatformerNew.Installer
@@ -8,16 +10,24 @@ namespace AcademyPlatformerNew.Installer
         public override void InstallBindings()
         {
             Container
-                .BindInterfacesAndSelfTo<UIMainMenuWindowController>()
-                .AsSingle();
+                .Bind<UIMainMenuWindowController>()
+                .AsSingle()
+                .NonLazy();
 
             Container
                 .BindInterfacesAndSelfTo<UIGameWindowController>()
-                .AsSingle();
+                .AsSingle()
+                .NonLazy();
 
             Container
                 .BindInterfacesAndSelfTo<UIRestartWindowController>()
-                .AsSingle();
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .BindInterfacesAndSelfTo<HUDWindowController>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

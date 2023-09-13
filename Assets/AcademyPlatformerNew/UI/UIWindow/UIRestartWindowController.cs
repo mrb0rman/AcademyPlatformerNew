@@ -1,12 +1,14 @@
-﻿namespace AcademyPlatformerNew.UI.UIWindow
+﻿using AcademyPlatformerNew.UI.UIService;
+
+namespace AcademyPlatformerNew.UI.UIWindow
 {
     public class UIRestartWindowController
     {
-        private readonly UIService.UIService _uiService;
+        private readonly IUIService _uiService;
         
         private UIRestartWindow _uiRestartWindow;
 
-        public UIRestartWindowController(UIService.UIService uiService)
+        public UIRestartWindowController(IUIService uiService)
         {
             _uiService = uiService;
 

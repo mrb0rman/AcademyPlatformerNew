@@ -32,7 +32,7 @@ namespace AcademyPlatformerNew
                 .AsSingle()
                 .NonLazy();
             
-            PlayerInstaller.Install(Container);
+            //PlayerInstaller.Install(Container);
 
             //FallObjectInstaller.Install(Container);
         }

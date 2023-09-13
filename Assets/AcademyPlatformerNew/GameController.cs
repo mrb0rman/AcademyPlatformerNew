@@ -6,9 +6,9 @@ namespace AcademyPlatformerNew
 {
     public class GameController
     {
-        private readonly UIService _uiService;
+        private readonly IUIService _uiService;
 
-        public GameController(UIService uiService)
+        public GameController(IUIService uiService)
         {
             _uiService = uiService;
             

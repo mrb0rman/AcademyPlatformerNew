@@ -1,14 +1,15 @@
+using AcademyPlatformerNew.UI.UIService;
 using UI.HUD;
 
 namespace AcademyPlatformerNew.UI.HUD
 {
     public class HUDWindowController
     {
-        private readonly UIService.UIService _uiService;
+        private readonly IUIService _uiService;
         
         private HUDWindow _hudWindowWindow;
 
-        public HUDWindowController(UIService.UIService uiService)
+        public HUDWindowController(IUIService uiService)
         {
             _uiService = uiService;
             _hudWindowWindow = uiService.Get<HUDWindow>();
@@ -24,7 +25,7 @@ namespace AcademyPlatformerNew.UI.HUD
         
         public void ChangeScore(int score)
         {
-            _hudWindowWindow.ChangeScoreText(score);
+            //_hudWindowWindow.ChangeScoreText(score);
         }
         
         public void SetParameters(int score = 0, float healthPoint = 100f)
@@ -32,7 +33,7 @@ namespace AcademyPlatformerNew.UI.HUD
             ChangeScore(score);
             
             healthPoint = ChekHPPoint(healthPoint);
-            _hudWindowWindow.ChangeHealthBar(healthPoint);
+            //_hudWindowWindow.ChangeHealthBar(healthPoint);
         }
 
         private float ChekHPPoint(float healthPoint, float currentHP = 0)

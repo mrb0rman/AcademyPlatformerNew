@@ -10,9 +10,9 @@ namespace AcademyPlatformerNew.UI.UIService
         private Dictionary<Type, UIWindow> _loadWindow = new Dictionary<Type, UIWindow>();
         private Dictionary<Type, GameObject> _initWindow = new Dictionary<Type, GameObject>();
 
-        private UIRoot _uiRoot;
+        private IUIRoot _uiRoot;
 
-        public UIService(UIRoot uiRoot)
+        public UIService(IUIRoot uiRoot)
         {
             _uiRoot = uiRoot;
             LoadWindows();

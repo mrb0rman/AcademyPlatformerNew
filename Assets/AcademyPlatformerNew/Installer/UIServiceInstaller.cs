@@ -9,13 +9,15 @@ namespace AcademyPlatformerNew.Installer
         public override void InstallBindings()
         {
             Container
-                .Bind<UIRoot>()
+                .Bind<IUIRoot>()
+                .To<UIRoot>()
                 .FromComponentInNewPrefabResource(ResourcesConst.UIRootPrefab)
                 .AsSingle()
                 .NonLazy();
             
             Container
-                .Bind<UIService>()
+                .Bind<IUIService>()
+                .To<UIService>()
                 .AsSingle()
                 .NonLazy();
 

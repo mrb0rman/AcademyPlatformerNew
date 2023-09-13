@@ -1,12 +1,14 @@
-﻿namespace AcademyPlatformerNew.UI.UIWindow
+﻿using AcademyPlatformerNew.UI.UIService;
+
+namespace AcademyPlatformerNew.UI.UIWindow
 {
     public class UIMainMenuWindowController
     {
-        private readonly UIService.UIService _uiService;
+        private readonly IUIService _uiService;
         
         private UIMainMenuWindow _mainMenuWindow;
 
-        public UIMainMenuWindowController(UIService.UIService uiService)
+        public UIMainMenuWindowController(IUIService uiService)
         {
             _uiService = uiService;
             

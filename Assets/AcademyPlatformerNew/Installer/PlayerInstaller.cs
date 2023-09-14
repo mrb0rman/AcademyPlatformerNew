@@ -7,24 +7,15 @@ namespace AcademyPlatformerNew.Installer
     {
         public override void InstallBindings()
         {
-            Container
+           Container
                 .BindFactory<PlayerView, PlayerView.Factory>()
                 .FromComponentInNewPrefabResource(ResourcesConst.PlayerPrefab)
-                .AsSingle();
+                .AsSingle()
+                .NonLazy();
             
             Container
                 .Bind<PlayerConfig>()
                 .FromScriptableObjectResource(ResourcesConst.PlayerConfig)
-                .AsSingle()
-                .NonLazy();
-            
-            Container
-                .Bind<PlayerAnimator>()
-                .AsSingle()
-                .NonLazy();
-
-            Container
-                .Bind<PlayerMovementController>()
                 .AsSingle()
                 .NonLazy();
             

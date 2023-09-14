@@ -1,4 +1,6 @@
-﻿using DG.Tweening;
+﻿using AcademyPlatformerNew.Camera;
+using AcademyPlatformerNew.Protocol;
+using DG.Tweening;
 using UnityEngine;
 
 namespace AcademyPlatformerNew.Player
@@ -27,19 +29,19 @@ namespace AcademyPlatformerNew.Player
         private const float DecreasePlayerDeath = 0f;
         private const int NumberRepetitionsGetDamage = 5;
         
-        public PlayerAnimator(PlayerView playerView, UnityEngine.Camera cameraView)
+        public PlayerAnimator(PlayerView playerView, CameraView cameraView)
         {
             _playerView = playerView;
 
             if (cameraView != null)
             {
-                _startPositionPlayer = cameraView.ScreenToWorldPoint(new Vector3(
-                    -FactorOffsetX*playerView.SpriteRenderer.size.x, 
-                    cameraView.pixelHeight / FactorPixelHeight, 
+                _startPositionPlayer = cameraView.MainCamera.ScreenToWorldPoint(new Vector3(
+                    -FactorOffsetX*_playerView.SpriteRenderer.size.x, 
+                    cameraView.MainCamera.pixelHeight / FactorPixelHeight, 
                     -cameraView.transform.position.z));
-                _endPositionPlayer =  cameraView.ScreenToWorldPoint(new Vector3(
-                    cameraView.pixelWidth / FactorPixelWidth, 
-                    cameraView.pixelHeight / FactorPixelHeight, 
+                _endPositionPlayer =  cameraView.MainCamera.ScreenToWorldPoint(new Vector3(
+                    cameraView.MainCamera.pixelWidth / FactorPixelWidth, 
+                    cameraView.MainCamera.pixelHeight / FactorPixelHeight, 
                     -cameraView.transform.position.z));
             }
             else

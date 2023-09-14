@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735ce35590d04cef84b8958020311f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 9159576830620002894}
   returnButton: {fileID: 2793826753019432250}
 --- !u!222 &8844369788178380028
 CanvasRenderer:

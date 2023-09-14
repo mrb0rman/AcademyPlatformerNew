@@ -8,6 +8,7 @@ namespace AcademyPlatformerNew.UI.UIWindow
         
         private Tween _showAnimation;
         private Tween _hideAnimation;
+        
         public override void Show()
         {
             _showAnimation?.Kill();

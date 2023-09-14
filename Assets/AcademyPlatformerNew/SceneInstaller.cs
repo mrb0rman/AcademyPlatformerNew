@@ -9,6 +9,12 @@ namespace AcademyPlatformerNew
     {
         public override void InstallBindings()
         {
+            Container
+                .Bind<CameraView>()
+                .FromComponentInNewPrefabResource(ResourcesConst.CameraPrefab)
+                .AsSingle()
+                .NonLazy();
+            
             UIServiceInstaller.Install(Container);
             
             Container
@@ -17,7 +23,7 @@ namespace AcademyPlatformerNew
                 .NonLazy();
             
             Container
-                .Bind<TickableManager.TickableManager>()
+                .BindInterfacesAndSelfTo<TickableManager.TickableManager>()
                 .AsSingle()
                 .NonLazy();
 
@@ -27,12 +33,13 @@ namespace AcademyPlatformerNew
                 .NonLazy();
             
             Container
-                .Bind<CameraView>()
-                .FromComponentInNewPrefabResource(ResourcesConst.CameraPrefab)
+                .Bind<PlayerControllerProtocol>()
                 .AsSingle()
                 .NonLazy();
             
-            //PlayerInstaller.Install(Container);
+            SoundInstaller.Install(Container);
+
+            PlayerInstaller.Install(Container);
 
             //FallObjectInstaller.Install(Container);
         }

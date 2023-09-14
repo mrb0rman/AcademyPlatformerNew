@@ -15,6 +15,8 @@ namespace AcademyPlatformerNew.Player
         public const float DelayDestroyPlayer = 2f;
         
         private PlayerControllerProtocol _playerControllerProtocol;
+        private PlayerAnimator _playerAnimator;
+        private PlayerMovementController _playerMovementController;
         
         private float _currentHealth;
         private float _currentSpeed;
@@ -23,8 +25,9 @@ namespace AcademyPlatformerNew.Player
         {
             _playerControllerProtocol = playerControllerProtocol;
             
-            //_playerHpController = new PlayerHpController(_playerConfig.PlayerModel.Health, _soundController);
-            _playerControllerProtocol.PlayerHpController.OnHealthChanged += 
+            var playerHpController = 
+                new PlayerHpController(_playerControllerProtocol.PlayerConfig.PlayerModel.Health, _playerControllerProtocol.SoundController);
+            playerHpController.OnHealthChanged += 
                 _playerControllerProtocol.HUDWindowController.ChangeHealthPoint;
         }
         
@@ -36,10 +39,10 @@ namespace AcademyPlatformerNew.Player
             _playerControllerProtocol.PlayerView = _playerControllerProtocol.PlayerViewFactory.Create();
             _playerControllerProtocol.PlayerView .SpriteRenderer.sprite = model.Sprite;
 
-            //_playerAnimator = new PlayerAnimator(_playerView, _camera);
-            _playerControllerProtocol.PlayerAnimator.Spawn();
+            _playerAnimator = new PlayerAnimator(_playerControllerProtocol.PlayerView, _playerControllerProtocol.Camera);
+            _playerAnimator.Spawn();
             
-            //_playerMovementController = new PlayerMovementController(_inputController, _playerView, this);
+            _playerMovementController = new PlayerMovementController(_playerControllerProtocol.InputController, _playerControllerProtocol.PlayerView, this);
             return _playerControllerProtocol.PlayerView;
         }
 
@@ -58,7 +61,7 @@ namespace AcademyPlatformerNew.Player
             _playerControllerProtocol.SoundController.Stop();
             _playerControllerProtocol.SoundController.Play(SoundName.GameOver);
 
-            _playerControllerProtocol.PlayerAnimator.Death(setEndWindow);
+            _playerAnimator.Death(setEndWindow);
             
             Object.Destroy(_playerControllerProtocol.PlayerView.gameObject, DelayDestroyPlayer);
             _playerControllerProtocol.PlayerView = null;

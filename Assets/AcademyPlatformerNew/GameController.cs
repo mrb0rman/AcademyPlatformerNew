@@ -1,27 +1,63 @@
-﻿using AcademyPlatformerNew.Player;
-using AcademyPlatformerNew.Protocol;
-using AcademyPlatformerNew.UI.UIService;
-using AcademyPlatformerNew.UI.UIWindow;
+using AcademyPlatformerNew.Player;
+using FallObject;
+using Sounds;
+using UI.UIService;
+using UI.UIWindows;
+using Zenject;
 
 namespace AcademyPlatformerNew
 {
-    public class GameController
+    public class GameController : IInitializable
     {
-        private readonly IUIService _uiService;
-        private readonly PlayerController _playerController;
-
-        public GameController(IUIService uiService, PlayerController playerController)
+        private FallObjectSpawner _fallObjectSpawner;
+        private PlayerController _playerController;
+        private UIService _uiService;
+        private UIGameWindowController _gameWindowController;
+        private SoundController _soundController;
+        
+        public GameController(
+            UIService uiService,
+            PlayerController playerController,
+            SoundController soundController,
+            FallObjectSpawner fallObjectSpawner,
+            UIGameWindowController gameWindowController
+        )
         {
             _uiService = uiService;
             _playerController = playerController;
+            _soundController = soundController;
+            _fallObjectSpawner = fallObjectSpawner;
+            _gameWindowController = gameWindowController;
 
-            Init();
+            playerController.PlayerHpController.OnZeroHealth += StopGame;
+        }
+        
+        
+        public void Initialize()
+        {
+            InitGame();
         }
 
-        private void Init()
+        public void InitGame()
         {
             _uiService.Show<UIMainMenuWindow>();
+            
+            _soundController.Play(SoundName.BackStart);
+        }
+
+        public void StartGame()
+        {
+            _soundController.Stop();
+            _soundController.Play(SoundName.BackMain);
+            
             _playerController.Spawn();
+            _fallObjectSpawner.StartSpawn();
+        }
+
+        public void StopGame()
+        {
+            _playerController.DestroyView(()=>_gameWindowController.ShowRestartWindow());
+            _fallObjectSpawner.StopSpawn();
         }
     }
 }

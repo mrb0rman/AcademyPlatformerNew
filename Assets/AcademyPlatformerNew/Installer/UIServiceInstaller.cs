@@ -1,5 +1,4 @@
-﻿using AcademyPlatformerNew.UI.UIService;
-using AcademyPlatformerNew.UI.UIWindow;
+﻿using UI.UIService;
 using Zenject;
 
 namespace AcademyPlatformerNew.Installer
@@ -9,22 +8,15 @@ namespace AcademyPlatformerNew.Installer
         public override void InstallBindings()
         {
             Container
-                .Bind<IUIRoot>()
-                .To<UIRoot>()
+                .Bind<UIRoot>()
                 .FromComponentInNewPrefabResource(ResourcesConst.UIRootPrefab)
                 .AsSingle()
                 .NonLazy();
             
             Container
-                .Bind<IUIService>()
-                .To<UIService>()
+                .Bind<UIService>()
                 .AsSingle()
                 .NonLazy();
-
-            /*Container
-                .Bind<UIAnimationWindow>()
-                .AsSingle()
-                .NonLazy();*/
             
             UIWindowControllerInstaller.Install(Container);
         }

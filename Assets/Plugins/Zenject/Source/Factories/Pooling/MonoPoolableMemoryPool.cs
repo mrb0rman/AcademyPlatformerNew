@@ -76,10 +76,10 @@ namespace Zenject
             }
         }
 
-        protected override void Reinitialize(TParam1 p1, TValue item)
+        protected override void Reinitialize(TParam1 p1, TValue soundView)
         {
-            item.gameObject.SetActive(true);
-            item.OnSpawned(p1);
+            soundView.gameObject.SetActive(true);
+            soundView.OnSpawned(p1);
         }
     }
 

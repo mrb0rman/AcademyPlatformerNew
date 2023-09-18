@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using FallObject;
+using Zenject;
 
 namespace AcademyPlatformerNew.Installer
 {
@@ -6,7 +7,31 @@ namespace AcademyPlatformerNew.Installer
     {
         public override void InstallBindings()
         {
-            throw new System.NotImplementedException();
+            Container
+                .Bind<FallObjectConfig>()
+                .FromResource(ResourcesConst.FallObjectConfigPath)
+                .AsSingle()
+                .NonLazy();
+            
+            Container.Bind<FallObjectSpawnConfig>()
+                .FromResource(ResourcesConst.FallObjectSpawnConfig)
+                .AsSingle()
+                .NonLazy();
+
+            Container
+                .Bind<FallObjectSpawner>()
+                .AsSingle();
+            
+            Container
+                .Bind<FallObjectController>()
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .BindMemoryPool<FallObjectView, FallObjectView.Pool>()
+                .WithInitialSize(7)
+                .FromComponentInNewPrefabResource(ResourcesConst.FallObjectViewPath)
+                .UnderTransformGroup("FallObject");
         }
     }
 }

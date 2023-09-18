@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace AcademyPlatformerNew.UI.UIService
+namespace UI.UIService
 {
     public interface IUIRoot
     {
-        Transform ActiveContainer { get; }
-        Transform DeactiveContainer { get; }
+        Transform Container { get; }
+        Transform PoolContainer { get; }
     }
 }

@@ -1,5 +1,5 @@
 using System;
-using AcademyPlatformerNew.Sounds;
+using Sounds;
 
 namespace AcademyPlatformerNew
 {
@@ -13,18 +13,24 @@ namespace AcademyPlatformerNew
     
         private float _health;
         
-        public PlayerHpController(float health, SoundController soundController)
+        public PlayerHpController(
+            float health,
+            SoundController soundController)
         {
             _health = health;
             _soundController = soundController;
-        
-            //FallObjectController.DamageToPlayerNotify += ReduceHealth;
+        }
+
+        public void SetHealth(float amount = 100)
+        {
+            _health = amount;
+            OnHealthChanged?.Invoke(_health);
         }
 
         public void ReduceHealth(float damage)
         {
             _health -= damage;
-        
+
             _soundController.Play(SoundName.GetDamage);
             OnHealthChanged?.Invoke(_health);
         

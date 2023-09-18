@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-namespace AcademyPlatformerNew.UI.UIService
+namespace UI.UIService
 {
     public abstract class UIWindow : MonoBehaviour, IUIWindow
     {
-        public Action OnShowEvent;
-        public Action OnHideEvent;
+        [HideInInspector] public Action OnShowEvent;        
+        [HideInInspector] public Action OnHideEvent;  
         
         public IUIService UIService { get; set; }
         

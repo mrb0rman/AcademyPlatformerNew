@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-namespace AcademyPlatformerNew.UI.UIService
+namespace UI.UIService
 {
     public class UIRoot : MonoBehaviour, IUIRoot
     {
-        public Transform ActiveContainer => activateContainer;
-        public Transform DeactiveContainer => deactivateContainer;
-
+        public Transform Container => activateContainer;
+        public Transform PoolContainer => deactivateContainer;
+        public Canvas RootCanvas => rootCanvas;
+        
         [SerializeField] private Transform activateContainer;
         [SerializeField] private Transform deactivateContainer;
+        [SerializeField] private Canvas rootCanvas;
     }
 }

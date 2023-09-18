@@ -1,4 +1,4 @@
-using AcademyPlatformerNew.UI.UIWindow;
+using UI.UIWindows;
 using UnityEngine;
 using UnityEngine.UI;
 

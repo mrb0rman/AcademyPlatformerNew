@@ -1,9 +1,7 @@
 ﻿using AcademyPlatformerNew.Camera;
 using AcademyPlatformerNew.Player;
-using AcademyPlatformerNew.Sounds;
-using AcademyPlatformerNew.UI.HUD;
-using UnityEngine;
-using Zenject;
+using Sounds;
+using UI.HUD;
 
 namespace AcademyPlatformerNew.Protocol
 {

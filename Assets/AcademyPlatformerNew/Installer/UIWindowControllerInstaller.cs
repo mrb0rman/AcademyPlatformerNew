@@ -1,6 +1,5 @@
-﻿using AcademyPlatformerNew.UI.HUD;
-using AcademyPlatformerNew.UI.UIService;
-using AcademyPlatformerNew.UI.UIWindow;
+﻿using UI.HUD;
+using UI.UIWindows;
 using Zenject;
 
 namespace AcademyPlatformerNew.Installer
@@ -13,19 +12,19 @@ namespace AcademyPlatformerNew.Installer
                 .Bind<UIMainMenuWindowController>()
                 .AsSingle()
                 .NonLazy();
-
+                    
             Container
-                .BindInterfacesAndSelfTo<UIGameWindowController>()
+                .Bind<UIGameWindowController>()
                 .AsSingle()
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<UIRestartWindowController>()
+                .Bind<UIRestartWindowController>()
                 .AsSingle()
                 .NonLazy();
-            
+
             Container
-                .BindInterfacesAndSelfTo<HUDWindowController>()
+                .Bind<HUDWindowController>()
                 .AsSingle()
                 .NonLazy();
         }

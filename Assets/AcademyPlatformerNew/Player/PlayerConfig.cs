@@ -16,7 +16,7 @@ namespace AcademyPlatformerNew.Player
     {
         public Sprite Sprite;
         
-        public int Health;
-        public int Speed;
+        public float Health;
+        public float Speed;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace AcademyPlatformerNew.UI.UIService
+﻿namespace UI.UIService
 {
     public interface IUIWindow
     {

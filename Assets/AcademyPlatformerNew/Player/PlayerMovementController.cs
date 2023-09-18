@@ -1,4 +1,3 @@
-using AcademyPlatformerNew.Protocol;
 using UnityEngine;
 
 namespace AcademyPlatformerNew.Player
@@ -8,21 +7,22 @@ namespace AcademyPlatformerNew.Player
         private InputController _inputController;
         
         private readonly PlayerView _playerView;
-
-        private const float Speed = 5f;
-   
+        
         private readonly Vector3 _leftPointStop;
         private readonly Vector3 _rightPointStop;
         private readonly float _step;
 
-        public PlayerMovementController(InputController inputController, PlayerView playerView, PlayerController playerController)
+        public PlayerMovementController(InputController inputController, 
+            PlayerView playerView, 
+            PlayerController playerController,
+            PlayerConfig playerConfig)
         {
             _playerView = playerView;
 
             _inputController = inputController;
             playerController.OnDisposed += Disposed;
 
-            _step = Speed * Time.deltaTime;
+            _step = playerConfig.PlayerModel.Speed * Time.deltaTime;
             _leftPointStop =  UnityEngine.Camera.main.ScreenToWorldPoint(new Vector3(0,0,0));
             _rightPointStop =  UnityEngine.Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
         

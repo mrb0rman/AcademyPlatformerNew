@@ -15,20 +15,15 @@ namespace AcademyPlatformerNew
                 .AsSingle()
                 .NonLazy();
             
-            UIServiceInstaller.Install(Container);
-            
             Container
-                .Bind<GameController>()
+                .BindInterfacesTo<GameController>()
                 .AsSingle()
                 .NonLazy();
             
+            SoundInstaller.Install(Container);
+            
             Container
-                .BindInterfacesAndSelfTo<TickableManager.TickableManager>()
-                .AsSingle()
-                .NonLazy();
-
-            Container
-                .Bind<InputController>()
+                .BindInterfacesAndSelfTo<InputController>()
                 .AsSingle()
                 .NonLazy();
             
@@ -37,11 +32,13 @@ namespace AcademyPlatformerNew
                 .AsSingle()
                 .NonLazy();
             
-            SoundInstaller.Install(Container);
+            UIServiceInstaller.Install(Container);
+            
+            
 
             PlayerInstaller.Install(Container);
 
-            //FallObjectInstaller.Install(Container);
+            FallObjectInstaller.Install(Container);
         }
     }
 }

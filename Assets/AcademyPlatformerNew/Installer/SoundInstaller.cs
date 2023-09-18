@@ -1,4 +1,4 @@
-﻿using AcademyPlatformerNew.Sounds;
+﻿using Sounds;
 using Zenject;
 
 namespace AcademyPlatformerNew.Installer
@@ -9,15 +9,15 @@ namespace AcademyPlatformerNew.Installer
         {
             Container
                 .Bind<SoundConfig>()
-                .FromScriptableObjectResource(ResourcesConst.SoundConfig)
+                .FromResource(ResourcesConst.SoundConfig)
                 .AsSingle()
                 .NonLazy();
-
+            
             Container
                 .Bind<SoundController>()
                 .AsSingle()
                 .NonLazy();
-
+            
             Container
                 .BindMemoryPool<SoundView, SoundView.Pool>()
                 .FromComponentInNewPrefabResource(ResourcesConst.SoundView)
